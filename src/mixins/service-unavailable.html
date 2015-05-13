@@ -6,7 +6,7 @@ as well.</p>
   _ = <span class="built_in">require</span> <span class="string">'underscore'</span>
   utils = <span class="built_in">require</span> <span class="string">'lib/utils'</span>
 
-  <span class="function"><span class="title">serviceErrorCallback</span> = <span class="params">(method, collection, opts)</span> -&gt;</span>
+  <span class="function"><span class="title">serviceErrorCallback</span> = <span class="params">(method, collection, opts = {})</span> -&gt;</span>
     callback = opts.error
     opts.<span class="function"><span class="title">error</span> = <span class="params">($xhr)</span> =&gt;</span>
       {status} = $xhr</div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>Don&#39;t trigger for canceled requests.</p></div></div><div class="code"><div class="wrapper">      <span class="keyword">if</span> status <span class="keyword">isnt</span> <span class="number">0</span>
@@ -14,7 +14,7 @@ as well.</p>
           error = I18n?.t(<span class="string">'error.notification'</span>) <span class="keyword">or</span>
             <span class="string">"There was a problem communicating with the server."</span>
           <span class="property">@publishEvent</span> <span class="string">'notify'</span>, error,
-            <span class="class">classes: '<span class="title">alert</span>-<span class="title">danger</span>'</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p><code>418</code> is specific to external services being down.</p></div></div><div class="code"><div class="wrapper">  <span class="function"><span class="title">serviceUnavailableCallback</span> = <span class="params">(method, collection, opts)</span> -&gt;</span>
+            <span class="class">classes: '<span class="title">alert</span>-<span class="title">danger</span>'</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p><code>418</code> is specific to external services being down.</p></div></div><div class="code"><div class="wrapper">  <span class="function"><span class="title">serviceUnavailableCallback</span> = <span class="params">(method, collection, opts = {})</span> -&gt;</span>
     callback = opts.statusCode?[<span class="string">'418'</span>]
     opts.statusCode ||= {}</div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>Make sure we don&#39;t override existing <code>statusCode</code> callbacks.</p></div></div><div class="code"><div class="wrapper">    _.extend opts.statusCode,</div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>JSON response uses the <code>message</code> property when provided.</p></div></div><div class="code"><div class="wrapper">      <span class="number">418</span>: <span class="function"><span class="params">($xhr)</span> =&gt;</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>Invoke existing <code>418</code> callback if present.</p></div></div><div class="code"><div class="wrapper">        callback?.apply (opts.context <span class="keyword">or</span> opts), arguments
         errorState = utils.parseJSON $xhr.responseText

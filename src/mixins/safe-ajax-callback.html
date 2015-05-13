@@ -7,7 +7,7 @@ which don&#39;t provide as nice of a hook with AOP.</p></div></div><div class="c
   _ = <span class="built_in">require</span> <span class="string">'underscore'</span>
   advice = <span class="built_in">require</span> <span class="string">'flight/advice'</span>
 
-  <span class="function"><span class="title">safeAjaxCallback</span> = <span class="params">(method, collection, opts)</span> -&gt;</span>
+  <span class="function"><span class="title">safeAjaxCallback</span> = <span class="params">(method, collection, opts = {})</span> -&gt;</span>
     _.each [<span class="string">'success'</span>, <span class="string">'error'</span>, <span class="string">'complete'</span>], <span class="function"><span class="params">(val)</span> -&gt;</span>
       callback = opts[val]
       <span class="keyword">if</span> callback
