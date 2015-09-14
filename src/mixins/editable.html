@@ -67,7 +67,7 @@ as the result to save to the server.</p></div></div><div class="code"><div class
       evt.preventDefault()
       _.defaults opts, DEFAULTS
       opts.$field = <span class="property">@$</span>(field)
-      opts.model = <span class="property">@model</span>
+      opts.model ||= <span class="property">@model</span>
       <span class="property">@makeEditable</span> opts
 
   <span class="function"><span class="title">exports</span> = -&gt;</span>
