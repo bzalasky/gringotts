@@ -1,6 +1,6 @@
 define (require) ->
   moment = require 'moment'
-  backboneValidation = require 'backbone_validation'
+  backboneValidation = require 'backbone-validation'
   helper = require '../../lib/mixin-helper'
 
   backboneValidation.configure {

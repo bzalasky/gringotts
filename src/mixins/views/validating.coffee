@@ -1,5 +1,5 @@
 define (require) ->
-  backboneValidation = require 'backbone_validation'
+  backboneValidation = require 'backbone-validation'
   stickit = require 'stickit'
   helper = require '../../lib/mixin-helper'
 
