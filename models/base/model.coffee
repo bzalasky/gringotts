@@ -7,7 +7,7 @@ define (require) ->
   WithHeaders = require '../../mixins/models/with-headers'
 
   # Abstract class for models. Includes useful mixins by default.
-  class Model extends utils.mix Chaplin.Model
+  class Model extends utils.mix(Chaplin.Model)
       .with WithHeaders, ActiveSyncMachine, Abortable, SafeSyncCallback
 
     save: (key, val, options) ->
